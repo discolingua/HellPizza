@@ -11,12 +11,12 @@ class Background extends Entity
 {
 
     private var xVel:Float = 0;
+    private var yVel:Float = 0;
     private var xAcceleration:Float = 0;
 
     private static inline var maxVelocity:Float = 4;
     private static inline var speed:Float = 2;
-    private static inline var drag:Float = 0.4;
-
+    private static inline var drag:Float = 0.99;
 
     public function new(x:Float, y:Float)
     {
@@ -33,8 +33,19 @@ class Background extends Entity
     public override function update()
     {
 	handleInput();
-	//	move();
-	moveBy(xVel, 0);
+
+
+	// bounds checking for vertical scrolling
+	if (y > 0) { 
+	    yVel = 0;
+	    y = 0;
+	}
+	if (y < -960) {
+	    yVel = 0;
+	    y = -960;
+	}
+
+	moveBy(xVel, yVel);
 
 	super.update();
     }
@@ -43,33 +54,21 @@ class Background extends Entity
     {
 	xAcceleration = 0;
 
-	if (Input.check("left"))
-	    {
-		xVel = .5;
-	    }
-	if (Input.check("right"))
-	    {
-		xVel = -.5;
-	    }
+	if (Input.check("left"))  {
+	    xVel = .5;
+	} 
+	else if (Input.check("right")) {
+	    xVel = -.5;
+	} else {
+	    xVel = -.2;
+	}
+
+	if (Input.check("up")) {
+	    yVel = 2.5;
+	}
+	if (Input.check("down")) {
+	    yVel = -2.5;
+	}
     }
-
-    private function move()
-    {
-	xVel += xAcceleration * speed;
-
-	if(Math.abs(xVel) > maxVelocity)
-	    {
-		xVel = maxVelocity * HXP.sign(xVel);
-	    }
-	if(xVel < 0)
-	    {
-		xVel = Math.min(xVel + drag, 0);
-	    }
-	else if (xVel > 0)
-	    {
-		xVel = Math.max(xVel - drag, 0);
-	    }
-    }
-
 
 }

@@ -10,7 +10,7 @@ class Enemy extends Entity
 	super(x,y);
 
 	layer = 10;
-	graphic = Image.createRect(32,32);
+	graphic = new Image("gfx/skull.png");
 	setHitbox(32, 32);
 	type = "enemy";
     }

@@ -23,8 +23,8 @@ class Player extends Entity
 	super(x, y);
 
 	layer = 10;
-	graphic = new Image ("gfx/block.png");
-	setHitbox(32,32);
+	graphic = new Image ("gfx/playership.png");
+	setHitbox(64,64);
 
 	Input.define("up", [Key.UP, Key.W]);
 	Input.define("down", [Key.DOWN, Key.S]);
