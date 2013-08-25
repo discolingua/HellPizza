@@ -22,6 +22,7 @@ class Player extends Entity
     {
 	super(x, y);
 
+	layer = 10;
 	graphic = new Image ("gfx/block.png");
 	setHitbox(32,32);
 
