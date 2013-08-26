@@ -15,7 +15,7 @@ class GameScene extends Scene
 
     public function new()
     {
-	//	bgMusic = new Sfx("audio/tenseconds.wav");
+	bgMusic = new Sfx("sfx/tenseconds.mp3");
 	super();
     }
 
@@ -23,6 +23,7 @@ class GameScene extends Scene
     {
 	add(new Player(30, 50));
 	add(new Background(0, 0));
+	bgMusic.loop();
 
     }
 
