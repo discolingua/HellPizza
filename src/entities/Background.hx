@@ -2,7 +2,7 @@ package entities;
 
 import com.haxepunk.Entity;
 import com.haxepunk.HXP;
-import com.haxepunk.graphics.Image;
+import com.haxepunk.graphics.Backdrop;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
 
@@ -23,7 +23,7 @@ class Background extends Entity
 	super(x,y);
 
 	layer = 1000;
-	graphic = new Image("gfx/wallpaper.png");
+	graphic = new Backdrop("gfx/wallpaper.png");
 
 	Input.define("left", [Key.LEFT, Key.A]);
 	Input.define("right", [Key.RIGHT, Key.D]);
@@ -33,8 +33,16 @@ class Background extends Entity
     public override function update()
     {
 	handleInput();
+	checkBounds();
 
+	
+	moveBy(xVel, yVel);
 
+	super.update();
+    }
+
+    private function checkBounds()
+    {
 	// bounds checking for vertical scrolling
 	if (y > 0) { 
 	    yVel = 0;
@@ -44,10 +52,7 @@ class Background extends Entity
 	    yVel = 0;
 	    y = -960;
 	}
-
-	moveBy(xVel, yVel);
-
-	super.update();
+	
     }
 
     private function handleInput()
@@ -64,10 +69,10 @@ class Background extends Entity
 	}
 
 	if (Input.check("up")) {
-	    yVel = 2.5;
+	    yVel = 4.5;
 	}
 	if (Input.check("down")) {
-	    yVel = -2.5;
+	    yVel = -4.5;
 	}
     }
 
