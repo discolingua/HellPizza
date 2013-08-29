@@ -33,6 +33,7 @@ class Background extends Entity
     public override function update()
     {
 	handleInput();
+	// handleScrolling();
 	checkBounds();
 
 	
@@ -53,6 +54,23 @@ class Background extends Entity
 	    y = -960;
 	}
 	
+    }
+
+    private function handleScrolling()
+    {
+	if (Global.player.y < HXP.screen.height / 2) {
+	    yVel = 4.5;
+	}
+	if (Global.player.y > HXP.screen.height / 2) {
+	    yVel = -4.5;
+	}
+	if (Global.player.x < HXP.screen.width / 2) {
+	    xVel = -.1;
+	}
+	if (Global.player.x > HXP.screen.width / 2) {
+	    xVel = -.3;
+	}
+
     }
 
     private function handleInput()

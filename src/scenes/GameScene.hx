@@ -4,6 +4,7 @@ import com.haxepunk.Scene;
 import com.haxepunk.HXP;
 import com.haxepunk.Sfx;
 import entities.Player;
+import entities.PizzaDeliv;
 import entities.Background;
 
 class GameScene extends Scene
@@ -21,12 +22,10 @@ class GameScene extends Scene
 
     public override function begin()
     {
-
-
 	add(Global.player = new Player(30, 50));
+	// add(Global.pizzaDeliv = new PizzaDeliv(30, 50));
 	add(new Background(0, 0));
 	bgMusic.loop();
-
     }
 
     public override function update()
