@@ -13,10 +13,11 @@ class PizzaDeliv extends Entity
     private var yVel:Float;
     private var xAcceleration:Float;
     private var yAcceleration:Float;
+    private var facing:String;
 
-    private static inline var maxVelocity:Float = 8;
-    private static inline var speed:Float = 3;
-    private static inline var drag:Float = 0.4;
+    private static inline var maxVelocity:Float = 6;
+    private static inline var speed:Float = 2;
+    private static inline var drag:Float = 0.6;
 
     private var sprite:Spritemap;
 
@@ -26,8 +27,12 @@ class PizzaDeliv extends Entity
 
 	layer = 10;
 	sprite = new Spritemap("gfx/delivSpritesheet.png",64,128);
-	sprite.add("idle", [0,1], 4);
-	sprite.play("idle");
+	sprite.add("idleRight", [0,1], 4);
+	sprite.add("walkRight", [2,3,4,3], 4);
+	sprite.add("idleLeft", [5,6], 4);
+	sprite.add("walkLeft", [7,8,9,8], 4);
+	sprite.play("idleRight");
+	facing = "right";
 	graphic = sprite;
 	// setHitBox(32,64);
 
@@ -46,6 +51,7 @@ class PizzaDeliv extends Entity
     {
 	handleInput();
 	move();
+	setSprites();
 	moveBy(xVel, yVel);
 	// setAnimations();
 	
@@ -60,10 +66,12 @@ class PizzaDeliv extends Entity
 	if (Input.check("left"))
 	    {
 		xAcceleration = -1;
+		facing = "left";
 	    }
 	if (Input.check("right"))
 	    {
 		xAcceleration = 1;
+		facing = "right";
 	    }
 	if (Input.check("up"))
 	    {
@@ -107,5 +115,16 @@ class PizzaDeliv extends Entity
 	    {
 		yVel = Math.max(yVel - drag, 0);
 	    }
+    }
+
+    private function setSprites()
+    {
+	if ((Math.abs(xVel) > 0) || (Math.abs(yVel) > 0)) {
+	    if (facing == "right") { sprite.play("walkRight"); }
+	    if (facing == "left" ) { sprite.play("walkLeft"); }
+	} else {
+	    if (facing == "right") { sprite.play("idleRight"); }
+	    if (facing == "left" ) { sprite.play("idleLeft"); }
+	}
     }
 }
