@@ -25,7 +25,9 @@ class Background extends Entity
 
 	layer = 1000;
 	//	graphic = new Backdrop("gfx/bgPizzaShop.png");
-	graphic = new Image("gfx/bgPizzaShop.png");
+	// graphic = new Image("gfx/bgPizzaShop.png");
+	graphic = new Backdrop("gfx/wallpaper.png");
+	graphic.scrollX = graphic.scrollY = Global.scrollSpeed / 2;
 
 	Input.define("left", [Key.LEFT, Key.A]);
 	Input.define("right", [Key.RIGHT, Key.D]);
@@ -38,7 +40,7 @@ class Background extends Entity
 	// handleScrolling();
 	checkBounds();
 
-	
+
 	// moveBy(xVel, yVel);
 
 	super.update();

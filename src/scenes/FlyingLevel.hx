@@ -27,6 +27,7 @@ class FlyingLevel extends Scene
     {
 	createMap(tmxLevelName);
 	add(Global.player = new Player(30,50));
+	add(new Background(0,0));
     }
 
     public function createMap(mapData:String)
