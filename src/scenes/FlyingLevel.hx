@@ -13,6 +13,8 @@ class FlyingLevel extends Scene
     private var pngTileset:String;
     private var bgLevelName:String;
 
+    private var spawnTimer:Float = .5;
+
     public function new(levelName:String)
     {
 	super();
@@ -32,12 +34,22 @@ class FlyingLevel extends Scene
 	var e = new TmxEntity(mapData);
 
 	e.loadGraphic(pngTileset, ["main"]);
+	e.loadMask("collide", "walls");
 
 	add(e);
     }
 
     public override function update()
     {
+	spawnTimer -= HXP.elapsed;
+	if (spawnTimer < 0) { spawn(); }
 	super.update();
+    }
+
+    private function spawn()
+    {
+	var y = Math.random() * HXP.height;
+	add(new entities.Enemy(HXP.width, y));
+	spawnTimer = .5;
     }
 }

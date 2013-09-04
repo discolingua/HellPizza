@@ -40,10 +40,16 @@ class Player extends Entity
     public override function update()
     {
 	handleInput();
+	checkCollide();
 	move();
 	moveBy(xVel,yVel);
 
 	super.update();
+    }
+
+    private function checkCollide()
+    {
+	if ( collide("walls", x, y) != null ) { y = 0; }
     }
 
     private function handleInput()
