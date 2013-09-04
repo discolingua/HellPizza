@@ -10,7 +10,7 @@ class Main extends Engine
 		HXP.console.enable();
 #end
 		//		HXP.screen.scale = 1;
-		HXP.scene = new scenes.GameScene();
+		HXP.scene = new scenes.FlyingLevel("testflight");
 	}
 
 	public static function main() { new Main(); }

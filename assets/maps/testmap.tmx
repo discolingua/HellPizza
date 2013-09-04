@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="16x16extratiles_0" tilewidth="16" tileheight="16">
+  <image source="../../../../../Documents/Photoshop/gamedev/tiles/16x16extratiles_0.PNG" width="112" height="64"/>
+ </tileset>
+ <layer name="main" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzjZWBg4B0GmIlMfSxIGNksaphHrhn4/MeExb3kmocPExMO6PLo+rHFCylhgs08cszihGJc/iQFc6JhfOFHrFnIfErSILpZnCTqJ9ad1DCPVD2MVDaPg4r+AWF+KrtvqGAA7rYR/g==
+  </data>
+ </layer>
+ <objectgroup name="objects" width="20" height="20">
+  <object name="bar" x="156" y="56"/>
+  <object x="208" y="67"/>
+  <object name="foo" x="208" y="67"/>
+ </objectgroup>
+</map>

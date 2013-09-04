@@ -10,5 +10,7 @@ class Global
     public static var player:Player;
     public static var pizzaDeliv:PizzaDeliv;
 
-    public static var checkpoint:String;
+    public var checkpoint:String;
+    public var bgName:String;
+    
 }

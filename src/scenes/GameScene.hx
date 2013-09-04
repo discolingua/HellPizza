@@ -22,8 +22,8 @@ class GameScene extends Scene
 
     public override function begin()
     {
-	// add(Global.player = new Player(30, 50));
-	add(Global.pizzaDeliv = new PizzaDeliv(30, 50));
+	add(Global.player = new Player(30, 50));
+	// add(Global.pizzaDeliv = new PizzaDeliv(30, 50));
 	add(new Background(0, 0));
 	bgMusic.loop();
     }
