@@ -10,7 +10,8 @@ class Global
     public static var player:Player;
     public static var pizzaDeliv:PizzaDeliv;
 
-    public var checkpoint:String;
-    public var bgName:String;
+    public static var scrollSpeed:Float = .5;
+    public static var checkpoint:String;
+    public static var bgName:String;
     
 }
