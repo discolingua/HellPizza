@@ -2,7 +2,7 @@ package scenes;
 
 import com.haxepunk.Scene;
 import com.haxepunk.HXP;
-import com.haxepunk.tmx.TmxEntity;
+import com.haxepunk.tmx.*;
 import entities.Player;
 import entities.Background;
 
@@ -26,16 +26,27 @@ class FlyingLevel extends Scene
     public override function begin()
     {
 	createMap(tmxLevelName);
-	add(Global.player = new Player(30,50));
+	// add(Global.player = new Player(30,50));
 	add(new Background(0,0));
     }
 
     public function createMap(mapData:String)
     {
-	var e = new TmxEntity(mapData);
-	e.loadGraphic(pngTileset, ["main"]);
-	e.loadMask("collide", "walls");
-	add(e);
+	removeAll();
+
+	var map:TmxMap = new TmxMap(openfl.Assets.getText(mapData));
+
+	var map_e = new TmxEntity(mapData);
+	map_e.loadGraphic(pngTileset, ["main"]);
+	map_e.loadMask("collide", "walls");
+	add(map_e);
+
+	for(object in map.getObjectGroup("objects").objects) {
+	    switch (object.type) {
+	    case "playerStart":
+		add(Global.player = new Player(object.x, object.y));
+	    }
+	}
     }
 
     public override function update()

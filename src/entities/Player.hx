@@ -43,7 +43,6 @@ class Player extends Entity
 	checkCollide();
 	move();
 	moveBy(xVel,yVel);
-
 	super.update();
     }
 
