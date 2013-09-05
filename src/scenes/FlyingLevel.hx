@@ -2,6 +2,7 @@ package scenes;
 
 import com.haxepunk.Scene;
 import com.haxepunk.HXP;
+import com.haxepunk.Sfx;
 import com.haxepunk.tmx.*;
 import entities.Player;
 import entities.Background;
@@ -12,6 +13,7 @@ class FlyingLevel extends Scene
     private var tmxLevelName:String;
     private var pngTileset:String;
     private var bgLevelName:String;
+    private var bgMusic:Sfx;
 
     private var spawnTimer:Float = .5;
 
@@ -25,12 +27,12 @@ class FlyingLevel extends Scene
 
     public override function begin()
     {
-	createMap(tmxLevelName);
-	// add(Global.player = new Player(30,50));
+	loadMap(tmxLevelName);
+	bgMusic.loop();
 	add(new Background(0,0));
     }
 
-    public function createMap(mapData:String)
+    public function loadMap(mapData:String)
     {
 	removeAll();
 
@@ -41,12 +43,19 @@ class FlyingLevel extends Scene
 	map_e.loadMask("collide", "walls");
 	add(map_e);
 
+	// read objects from .tmx map file
+
 	for(object in map.getObjectGroup("objects").objects) {
 	    switch (object.type) {
 	    case "playerStart":
 		add(Global.player = new Player(object.x, object.y));
 	    }
 	}
+
+	// read properties from .tmx map file
+
+	bgMusic = new Sfx("sfx/" + map.properties.resolve("bgMusic") + ".mp3");
+	
     }
 
     public override function update()
