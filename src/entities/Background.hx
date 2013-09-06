@@ -27,7 +27,6 @@ class Background extends Entity
 	//	graphic = new Backdrop("gfx/bgPizzaShop.png");
 	// graphic = new Image("gfx/bgPizzaShop.png");
 	graphic = new Backdrop("gfx/wallpaper.png");
-	graphic.scrollX = graphic.scrollY = Global.scrollSpeed / 2;
 
 	Input.define("left", [Key.LEFT, Key.A]);
 	Input.define("right", [Key.RIGHT, Key.D]);
@@ -36,6 +35,7 @@ class Background extends Entity
 
     public override function update()
     {
+	graphic.scrollX = Global.xScrollSpeed / 2;
 	handleInput();
 	// handleScrolling();
 	checkBounds();

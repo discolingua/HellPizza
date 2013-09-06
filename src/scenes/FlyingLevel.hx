@@ -6,6 +6,7 @@ import com.haxepunk.Sfx;
 import com.haxepunk.tmx.*;
 import entities.Player;
 import entities.Background;
+import entities.HUD;
 
 class FlyingLevel extends Scene
 {
@@ -28,8 +29,9 @@ class FlyingLevel extends Scene
     public override function begin()
     {
 	loadMap(tmxLevelName);
-	bgMusic.loop();
+	// bgMusic.loop();
 	add(new Background(0,0));
+	// add(new HUD());
     }
 
     public function loadMap(mapData:String)
@@ -60,7 +62,7 @@ class FlyingLevel extends Scene
 
     public override function update()
     {
-	HXP.camera.x += Global.scrollSpeed;
+	HXP.camera.x += Global.xScrollSpeed;
 	spawnTimer -= HXP.elapsed;
 	if (spawnTimer < 0) { spawn(); }
 	super.update();

@@ -8,12 +8,12 @@
  </tileset>
  <layer name="main" width="40" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1ALMUMwExNwD7BZ0AHIPyF2cQMzFgHAjLncyEWkuEwlqCZkDCjsWBkQ4wjCl5uJzHxMaxgVA7mDEQQ8G98HkkcMNFpaDAcDyBTZ6IAEAngsAtA==
+   eJzNlOEKwCAIhF35Z+v933fKOCZh5LBgB4c/Ivu4LKK8qvgQF6f+QaUz08O8mq+avm1x76yUR7lO8UUvY5YTmWalPTQ73I31TK3zF75+NkbCjHt1Jps7b+LDus0NWUb4OHBGRngXXo3u3fGn3KrOASY=
   </data>
  </layer>
  <layer name="collide" width="40" height="8">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1AKCaHgwAXS3EXInse6nll9JdR+p5hJr76j7aAMGq/sAGHEDlw==
+   eJxjYKAcCOLBgwHQy32D0e8wQKswoJZfKXEfPvWEzCDWrpHqPmqBweo+AFL0BYQ=
   </data>
  </layer>
  <objectgroup name="objects" width="40" height="8">

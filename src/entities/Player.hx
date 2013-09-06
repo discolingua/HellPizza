@@ -16,7 +16,7 @@ class Player extends Entity
 
     private static inline var maxVelocity:Float = 8;
     private static inline var speed:Float = 3;
-    private static inline var drag:Float = 0.4;
+    private static inline var drag:Float = 0.6;
 
     public function new(x:Int, y:Int)
     {
@@ -40,15 +40,20 @@ class Player extends Entity
     public override function update()
     {
 	handleInput();
-	checkCollide();
 	move();
+	checkCollide();
 	moveBy(xVel,yVel);
 	super.update();
     }
 
     private function checkCollide()
     {
-	if ( collide("walls", x, y) != null ) { y = 0; }
+	if ( collide("walls", x + xVel, y) != null ) {
+	    xVel = -xVel;
+	}
+	if ( collide("walls", x, y + yVel) != null) {
+	    yVel = -yVel;
+	}
     }
 
     private function handleInput()
@@ -79,33 +84,31 @@ class Player extends Entity
 	xVel += xAcceleration * speed;
 	yVel += yAcceleration * speed;
 
-	if(Math.abs(xVel) > maxVelocity)
-	    {
-		xVel = maxVelocity * HXP.sign(xVel);
-	    }
+	// keep velocity within maxVelocity
 
-	if(xVel < 0)
-	    {
-		xVel = Math.min(xVel + drag, 0);
-	    }
-	else if (xVel > 0)
-	    {
-		xVel = Math.max(xVel - drag, 0);
-	    }
+	if(Math.abs(xVel) > maxVelocity) {
+	    xVel = maxVelocity * HXP.sign(xVel);
+	}
 
-	if(Math.abs(yVel) > maxVelocity)
-	    {
-		yVel = maxVelocity * HXP.sign(yVel);
-	    }
+	if(Math.abs(yVel) > maxVelocity) {
+	    yVel = maxVelocity * HXP.sign(yVel);
+	}
 
-	if(yVel < 0)
-	    {
-		yVel = Math.min(yVel + drag, 0);
-	    }
-	else if (yVel > 0)
-	    {
-		yVel = Math.max(yVel - drag, 0);
-	    }
+	// apply drag for deceleration
+
+	if(xVel < 0) {
+	    xVel = Math.min(xVel + drag, 0);
+	}
+	else if (xVel > 0) {
+	    xVel = Math.max(xVel - drag, 0);
+	}
+
+	if(yVel < 0) {
+	    yVel = Math.min(yVel + drag, 0);
+	}
+	else if (yVel > 0) {
+	    yVel = Math.max(yVel - drag, 0);
+	}
     }
 }
 
