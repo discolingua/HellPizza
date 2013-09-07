@@ -13,6 +13,8 @@ class Player extends Entity
     private var yVel:Float;
     private var xAcceleration:Float;
     private var yAcceleration:Float;
+    private var xOffset:Float;
+    private var yOffset:Float;
 
     private static inline var maxVelocity:Float = 8;
     private static inline var speed:Float = 3;
@@ -42,6 +44,7 @@ class Player extends Entity
 	handleInput();
 	move();
 	checkCollide();
+	moveCamera();
 	moveBy(xVel,yVel);
 	super.update();
     }
@@ -54,6 +57,30 @@ class Player extends Entity
 	if ( collide("walls", x, y + yVel) != null) {
 	    yVel = -yVel;
 	}
+	if (y <= 0) { 
+	    yVel = -yVel;
+	    y = 10;
+	}
+    }
+
+    private function moveCamera()
+    {
+	xOffset = x - HXP.camera.x;
+	yOffset = y - HXP.camera.y;
+
+	// Global.text1 = Std.string(yOffset);
+
+	if (yOffset > 300 && yVel > 0) { 
+	    HXP.camera.y += yVel; 
+	}
+
+	if (yOffset < 50 && yVel < 0) {
+	    HXP.camera.y += yVel;
+	    if (HXP.camera.y <=0) { 
+		HXP.camera.y = 0; 
+	    }
+	}
+	
     }
 
     private function handleInput()

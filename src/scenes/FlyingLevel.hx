@@ -31,7 +31,7 @@ class FlyingLevel extends Scene
 	loadMap(tmxLevelName);
 	// bgMusic.loop();
 	add(new Background(0,0));
-	// add(new HUD());
+	add(new HUD());
     }
 
     public function loadMap(mapData:String)
