@@ -2,7 +2,7 @@
 <map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="64" tileheight="64">
  <properties>
   <property name="bgMusic" value="tenseconds"/>
-  <property name="xScrollStart" value=".6"/>
+  <property name="xScrollStart" value=".8"/>
   <property name="yScrollStart" value="0"/>
  </properties>
  <tileset firstgid="1" name="bloodrocktiles" tilewidth="64" tileheight="64">
@@ -10,19 +10,19 @@
  </tileset>
  <layer name="main" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJztV9EKgCAMXOZL9f//m5AjWdYKV9PmwaGgOO9OtBwAuEKOgUPs07ZGloKu56MHEmtLQkpvK+h697OYkvNlIeRq5Ma/8D5XA+8e2nJ7ngJn2PziauTGNfUi03uH27O/MU8bUvmiJ9w8TZydoTffLS1c6ch9M9Sc2xNYyRfR87WZL76ltN86er7/Rtd7/FdI2Tqs6rXEFYuaAqU=
+   eJztV9EOgzAIZHUv2/7/f6exZB2hlgGGsngJaR+qcMBhLQBQjLasdqt7us5oVtD33WsOPN7tCS++WXDx/fRia9K8vKpxPnoa8tbWETgfOHvoKonlCXu+OB8z80Vr504hZ6TxzaQZbX3bnGh8RKDXQ5Lv1lZ3zIXUTySONMPdGbj6Fvju6x6nkV6j9SuJZZvBmIMH7HOqV+sMfKX1pTWW+rCcs0Bb319iy8AXe5TuNbFl4HtGfUdajeKreW40g/6Nb2QsVh/0X4G7S118z4nFG1rdZbY3RkADgA==
   </data>
  </layer>
  <layer name="collide" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1csJACAMBNG0kP6btYMc8oHEnQFvKj4I6GbmYqva5N2dbXzTZHhzsxntq5ztDm+/d1N47/wtmfDixXs3vHren8OrN88KXqX1AAkDErs=
+   eJztlMsNwDAIxVgh+y/bCVpoDKINzxKnfMARZJnZGhaUyrsz+WJNlciX9eab++7WK5FvzJe+QRfylW9k5p6comf/Mr/y9XOQfQTqu5uD7CPIt87X6/8u351z3h90mm9nLTRHdj+TWrKZ6jspLr3ZGcU=
   </data>
  </layer>
  <objectgroup name="objects" width="60" height="20">
   <object name="playerStart" type="playerStart" x="149" y="153"/>
-  <object name="traffic" type="traffic" x="580" y="142">
+  <object name="traffic" type="traffic" x="768" y="325">
    <properties>
-    <property name="newX" value="-.6"/>
+    <property name="newX" value=".6"/>
     <property name="newY" value="0"/>
    </properties>
   </object>
@@ -32,5 +32,25 @@
     <property name="newY" value="-.6"/>
    </properties>
   </object>
+  <object name="traffic" type="traffic" x="1045" y="900">
+   <properties>
+    <property name="newX" value=".6"/>
+    <property name="newY" value="0"/>
+   </properties>
+  </object>
+  <object name="traffic" type="traffic" x="1201" y="503">
+   <properties>
+    <property name="newX" value="0"/>
+    <property name="newY" value=".6"/>
+   </properties>
+  </object>
+  <object name="traffic" type="traffic" x="1525" y="178">
+   <properties>
+    <property name="newX" value="3"/>
+    <property name="newY" value="0"/>
+   </properties>
+  </object>
+  <object name="pizza" type="pizza" x="156" y="1136"/>
+  <object name="pizza" type="pizza" x="757" y="912"/>
  </objectgroup>
 </map>

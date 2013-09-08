@@ -8,6 +8,7 @@ import entities.Player;
 import entities.Background;
 import entities.HUD;
 import entities.Traffic;
+import entities.Pizza;
 
 class FlyingLevel extends Scene
 {
@@ -54,6 +55,8 @@ class FlyingLevel extends Scene
 		add(Global.player = new Player(object.x, object.y));
 	    case "traffic":
 		add(new Traffic(object));
+	    case "pizza":
+		add(new Pizza(object));
 	    }
 	}
 
