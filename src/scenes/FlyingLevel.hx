@@ -7,6 +7,7 @@ import com.haxepunk.tmx.*;
 import entities.Player;
 import entities.Background;
 import entities.HUD;
+import entities.Traffic;
 
 class FlyingLevel extends Scene
 {
@@ -51,18 +52,23 @@ class FlyingLevel extends Scene
 	    switch (object.type) {
 	    case "playerStart":
 		add(Global.player = new Player(object.x, object.y));
+	    case "traffic":
+		add(new Traffic(object));
 	    }
 	}
 
 	// read properties from .tmx map file
 
 	bgMusic = new Sfx("sfx/" + map.properties.resolve("bgMusic") + ".mp3");
+	Global.xScrollSpeed = Std.parseFloat( map.properties.resolve("xScrollStart"));
+	Global.yScrollSpeed = Std.parseFloat( map.properties.resolve("yScrollStart"));
 	
     }
 
     public override function update()
     {
 	HXP.camera.x += Global.xScrollSpeed;
+	HXP.camera.y += Global.yScrollSpeed;
 	spawnTimer -= HXP.elapsed;
 	if (spawnTimer < 0) { spawn(); }
 	super.update();

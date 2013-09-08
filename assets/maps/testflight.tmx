@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="40" height="8" tilewidth="64" tileheight="64">
+<map version="1.0" orientation="orthogonal" width="60" height="20" tilewidth="64" tileheight="64">
  <properties>
   <property name="bgMusic" value="tenseconds"/>
+  <property name="xScrollStart" value=".6"/>
+  <property name="yScrollStart" value="0"/>
  </properties>
  <tileset firstgid="1" name="bloodrocktiles" tilewidth="64" tileheight="64">
   <image source="../graphics/bloodrocktiles.png" width="512" height="512"/>
  </tileset>
- <layer name="main" width="40" height="8">
+ <layer name="main" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJzNlOEKwCAIhF35Z+v933fKOCZh5LBgB4c/Ivu4LKK8qvgQF6f+QaUz08O8mq+avm1x76yUR7lO8UUvY5YTmWalPTQ73I31TK3zF75+NkbCjHt1Jps7b+LDus0NWUb4OHBGRngXXo3u3fGn3KrOASY=
+   eJztV9EKgCAMXOZL9f//m5AjWdYKV9PmwaGgOO9OtBwAuEKOgUPs07ZGloKu56MHEmtLQkpvK+h697OYkvNlIeRq5Ma/8D5XA+8e2nJ7ngJn2PziauTGNfUi03uH27O/MU8bUvmiJ9w8TZydoTffLS1c6ch9M9Sc2xNYyRfR87WZL76ltN86er7/Rtd7/FdI2Tqs6rXEFYuaAqU=
   </data>
  </layer>
- <layer name="collide" width="40" height="8">
+ <layer name="collide" width="60" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYKAcCOLBgwHQy32D0e8wQKswoJZfKXEfPvWEzCDWrpHqPmqBweo+AFL0BYQ=
+   eJzt1csJACAMBNG0kP6btYMc8oHEnQFvKj4I6GbmYqva5N2dbXzTZHhzsxntq5ztDm+/d1N47/wtmfDixXs3vHren8OrN88KXqX1AAkDErs=
   </data>
  </layer>
- <objectgroup name="objects" width="40" height="8">
-  <object name="playerStart" type="playerStart" x="96" y="53"/>
+ <objectgroup name="objects" width="60" height="20">
+  <object name="playerStart" type="playerStart" x="149" y="153"/>
+  <object name="traffic" type="traffic" x="580" y="142">
+   <properties>
+    <property name="newX" value="-.6"/>
+    <property name="newY" value="0"/>
+   </properties>
+  </object>
+  <object name="traffic" type="traffic" x="766" y="1048">
+   <properties>
+    <property name="newX" value=".6"/>
+    <property name="newY" value="-.6"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

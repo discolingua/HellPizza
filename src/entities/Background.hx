@@ -4,9 +4,6 @@ import com.haxepunk.Entity;
 import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.graphics.Backdrop;
-import com.haxepunk.utils.Input;
-import com.haxepunk.utils.Key;
-
 
 class Background extends Entity
 {
@@ -28,74 +25,20 @@ class Background extends Entity
 	// graphic = new Image("gfx/bgPizzaShop.png");
 	graphic = new Backdrop("gfx/wallpaper.png");
 
-	Input.define("left", [Key.LEFT, Key.A]);
-	Input.define("right", [Key.RIGHT, Key.D]);
-
     }
 
     public override function update()
     {
 	graphic.scrollX = Global.xScrollSpeed / 2;
-	handleInput();
+	// graphic.scrollY = Global.yScrollSpeed / 2;
+	// handleInput();
 	// handleScrolling();
-	checkBounds();
+	// bcheckBounds();
 
 
 	// moveBy(xVel, yVel);
 
 	super.update();
-    }
-
-    private function checkBounds()
-    {
-	// bounds checking for vertical scrolling
-	if (y > 0) { 
-	    yVel = 0;
-	    y = 0;
-	}
-	if (y < -960) {
-	    yVel = 0;
-	    y = -960;
-	}
-	
-    }
-
-    private function handleScrolling()
-    {
-	if (Global.player.y < HXP.screen.height / 2) {
-	    // yVel = 4.5;
-	}
-	if (Global.player.y > HXP.screen.height / 2) {
-	    // yVel = -4.5;
-	}
-	if (Global.player.x < HXP.screen.width / 2) {
-	    xVel = -.1;
-	}
-	if (Global.player.x > HXP.screen.width / 2) {
-	    xVel = -.3;
-	}
-
-    }
-
-    private function handleInput()
-    {
-	xAcceleration = 0;
-
-	if (Input.check("left"))  {
-	    xVel = .5;
-	} 
-	else if (Input.check("right")) {
-	    xVel = -.5;
-	} else {
-	    xVel = -.2;
-	}
-
-	if (Input.check("up")) {
-	    //  yVel = 4.5;
-	}
-	if (Input.check("down")) {
-	    // yVel = -4.5;
-	}
     }
 
 }

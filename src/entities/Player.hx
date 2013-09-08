@@ -68,18 +68,34 @@ class Player extends Entity
 	xOffset = x - HXP.camera.x;
 	yOffset = y - HXP.camera.y;
 
-	// Global.text1 = Std.string(yOffset);
+	// only manually scroll if no autoscroll
 
-	if (yOffset > 300 && yVel > 0) { 
-	    HXP.camera.y += yVel; 
-	}
+	if (Global.yScrollSpeed == 0) {
+	    if (yOffset > 300 && yVel > 0) { 
+		HXP.camera.y += yVel; 
+	    }
 
-	if (yOffset < 50 && yVel < 0) {
-	    HXP.camera.y += yVel;
-	    if (HXP.camera.y <=0) { 
-		HXP.camera.y = 0; 
+	    if (yOffset < 150 && yVel < 0) {
+		HXP.camera.y += yVel;
+		if (HXP.camera.y <=0) { 
+		    HXP.camera.y = 0; 
+		}
 	    }
 	}
+
+	if (Global.xScrollSpeed == 0) {
+	    if (xOffset > 300 && xVel > 0) { 
+		HXP.camera.x += xVel; 
+	    }
+
+	    if (xOffset < 150 && xVel < 0) {
+		HXP.camera.x += xVel;
+		if (HXP.camera.x <=0) { 
+		    HXP.camera.x = 0; 
+		}
+	    }
+	}
+
 	
     }
 
