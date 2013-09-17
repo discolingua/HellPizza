@@ -5,6 +5,7 @@ import com.haxepunk.HXP;
 import com.haxepunk.graphics.Image;
 import com.haxepunk.utils.Input;
 import com.haxepunk.utils.Key;
+import entities.Shot;
 
 class Player extends Entity
 {
@@ -28,10 +29,16 @@ class Player extends Entity
 	graphic = new Image ("gfx/playership.png");
 	setHitbox(64,64);
 
-	Input.define("up", [Key.UP, Key.W]);
-	Input.define("down", [Key.DOWN, Key.S]);
-	Input.define("left", [Key.LEFT, Key.A]);
-	Input.define("right", [Key.RIGHT, Key.D]);
+	Input.define("up", [Key.UP]);
+	Input.define("down", [Key.DOWN]);
+	Input.define("left", [Key.LEFT]);
+	Input.define("right", [Key.RIGHT]);
+
+	Input.define("shootUp", [Key.W]);
+	Input.define("shootDown", [Key.S]);
+	Input.define("shootLeft", [Key.A]);
+	Input.define("shootRight", [Key.D]);
+
 
 	xVel = 0;
 	yVel = 0;
@@ -43,14 +50,17 @@ class Player extends Entity
     {
 	handleInput();
 	move();
-	checkCollide();
 	moveCamera();
+	checkCollide();
 	moveBy(xVel,yVel);
 	super.update();
     }
 
     private function checkCollide()
     {
+
+	// check collisions with terrain and edge of map
+
 	if ( collide("walls", x + xVel, y) != null ) {
 	    xVel = -xVel;
 	}
@@ -61,6 +71,16 @@ class Player extends Entity
 	    yVel = -yVel;
 	    y = 10;
 	}
+
+	// check if player has scrolled offscreen
+
+	if ( xOffset < -100 
+	     || yOffset < -100 
+	     || xOffset > HXP.screen.width + 100 
+	     || yOffset > HXP.screen.height + 100 ) {
+	    Global.resetScene = true;
+	}
+	
     }
 
     private function moveCamera()
@@ -104,22 +124,30 @@ class Player extends Entity
 	xAcceleration = 0;
 	yAcceleration = 0;
 
-	if (Input.check("left"))
-	    {
-		xAcceleration = -1;
-	    }
-	if (Input.check("right"))
-	    {
-		xAcceleration = 1;
-	    }
-	if (Input.check("up"))
-	    {
-		yAcceleration = -1;
-	    }
-	if (Input.check("down"))
-	    {
-		yAcceleration = 1;
-	    }
+	if (Input.check("left")) {
+	    xAcceleration = -1;
+	}
+	if (Input.check("right")) {
+	    xAcceleration = 1;
+	}
+	if (Input.check("up")) {
+	    yAcceleration = -1;
+	}
+	if (Input.check("down")) {
+	    yAcceleration = 1;
+	}
+	if (Input.pressed("shootUp")) {
+	    scene.add(new Shot(0,-1));
+	}
+	if (Input.pressed("shootDown")) {
+	    scene.add(new Shot(0,1));
+	}
+	if (Input.pressed("shootLeft")) {
+	    scene.add(new Shot(-1,0));
+	}
+	if (Input.pressed("shootRight")) {
+	    scene.add(new Shot(1,0));
+	}
     }
 
     private function move()

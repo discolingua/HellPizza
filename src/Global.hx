@@ -22,4 +22,7 @@ class Global
 
     public static var text1:String = "12345678";
     
+
+    //flag during death etc. to have scene reset
+    public static var resetScene:Bool = false;
 }

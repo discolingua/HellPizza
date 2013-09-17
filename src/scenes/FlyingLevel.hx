@@ -74,6 +74,10 @@ class FlyingLevel extends Scene
 	HXP.camera.y += Global.yScrollSpeed;
 	spawnTimer -= HXP.elapsed;
 	if (spawnTimer < 0) { spawn(); }
+	if (Global.resetScene) {
+	    Global.resetScene = false;
+	   HXP.scene = new FlyingLevel("testflight");
+	}
 	super.update();
     }
 

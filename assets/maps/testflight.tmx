@@ -29,7 +29,7 @@
   <object name="traffic" type="traffic" x="766" y="1048">
    <properties>
     <property name="newX" value=".6"/>
-    <property name="newY" value="-.6"/>
+    <property name="newY" value="-3"/>
    </properties>
   </object>
   <object name="traffic" type="traffic" x="1045" y="900">
@@ -44,7 +44,7 @@
     <property name="newY" value=".6"/>
    </properties>
   </object>
-  <object name="traffic" type="traffic" x="1525" y="178">
+  <object name="pizza" type="pizza" x="1525" y="178">
    <properties>
     <property name="newX" value="3"/>
     <property name="newY" value="0"/>
@@ -52,5 +52,7 @@
   </object>
   <object name="pizza" type="pizza" x="156" y="1136"/>
   <object name="pizza" type="pizza" x="757" y="912"/>
+  <object name="pizza" type="pizza" x="1012" y="128"/>
+  <object name="pizza" type="pizza" x="1255" y="181"/>
  </objectgroup>
 </map>
